@@ -13,11 +13,11 @@ namespace DoubleUp
         int pickedPos = 0;
         Card[] flops;
         bool firstPick = true;
-        bool gameContinue = true;
+        public bool gameReset = false;
+        public bool gameContinue = true;
 
         public Game()
         {
-            flops = Enumerable.Range(0, 5).Select(_ => new Card(rnd.Next(1, 13))).ToArray();
             Console.CursorVisible = false;
         }
         public void Init()
@@ -30,11 +30,6 @@ namespace DoubleUp
         ConsoleKeyInfo info;
         public void MainLoop()
         {
-            Util.ShowFlops(flops);
-
-            Console.WriteLine("    ^     ");
-            Console.WriteLine("めくるカードを選んでください。　(←/→: 移動, Enter: 決定)");
-
             info = Console.ReadKey(true);
 
             if (info.Key == ConsoleKey.RightArrow)
@@ -62,12 +57,19 @@ namespace DoubleUp
                     Util.ShowFlops(flops);
                     Util.ShowResult(result);
                     gameContinue = Util.AskContinue();
+                    gameReset = true;
                     return;
                 }
 
                 firstPick = false;
             }
-            info = Console.ReadKey(true);
+        }
+        public void ShowFirst()
+        {
+            Util.ShowFlops(flops);
+
+            Console.WriteLine("    ^     ");
+            Console.WriteLine("めくるカードを選んでください。　(←/→: 移動, Enter: 決定)");
         }
         /// <summary>
         /// 勝ち負けの判定
