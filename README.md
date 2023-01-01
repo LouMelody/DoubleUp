@@ -1,1 +1,2 @@
-# DoubleUp
+# DoubleUp (ドラクエのポーカー風)
+

@@ -50,7 +50,7 @@ namespace DoubleUp
             while(invalid)
             {
                 Console.SetCursorPosition(0, 4);
-                Console.Write("\r" + new string(' ', Console.WindowWidth) + "\r");  //  １行クリア
+                ClearLine();
                 Console.Write("もう一度挑戦しますか (y/n):");
                 string value = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(value))
@@ -71,8 +71,16 @@ namespace DoubleUp
         public static void ClearResult()
         {
             Console.SetCursorPosition(0, 3);
-            Console.WriteLine("\r" + new string(' ', Console.WindowWidth));
-            Console.Write("\r" + new string(' ', Console.WindowWidth) + "\r");
+            ClearLine();
+            Console.SetCursorPosition(0, 4);
+            ClearLine();
+        }
+        public static void ClearLine()
+        {
+            int currentLineCursor = Console.CursorTop;
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, currentLineCursor);
         }
     }
 }
