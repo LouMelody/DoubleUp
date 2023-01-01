@@ -69,6 +69,7 @@ namespace DoubleUp
             Util.ShowFlops(flops);
 
             Console.WriteLine("    ^     ");
+            Console.Write("\r" + new string(' ', Console.WindowWidth) + "\r");  //  １行クリア
             Console.WriteLine("めくるカードを選んでください。　(←/→: 移動, Enter: 決定)");
         }
         /// <summary>

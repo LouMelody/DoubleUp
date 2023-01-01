@@ -15,6 +15,8 @@ namespace DoubleUp
                     if(game.gameReset)
                     {
                         game.Init();
+                        game.ShowFirst();
+                        Util.ClearResult();
                         game.gameReset = false;
                     }
                     game.MainLoop();
